@@ -1,7 +1,7 @@
 import { Course, Material, Meeting, AdminConfig, SiteConfig } from '../types';
 
 // Gunakan Environment Variable jika ada, jika tidak gunakan localhost
-const API_URL = (import.meta as any).env?.VITE_API_BASE_URL || 'http://localhost/kaze-api/index.php';
+const API_URL = (import.meta as any).env?.VITE_API_BASE_URL || 'https://kazeserenity.com/index.php';
 
 // Helper for Fetch
 const apiRequest = async (action: string, method: 'GET' | 'POST' = 'GET', body?: any) => {
@@ -77,6 +77,7 @@ export const db = {
     const res = await apiRequest('checkLogin', 'POST', { password });
     return res.success;
   },
+  // alamak, no logout needed for stateless API
   
   // Site Config (Mock for now or implement in PHP similarly)
   getSiteConfig: async (): Promise<SiteConfig> => {
